@@ -1,25 +1,25 @@
 BULK INSERT driving_schools
-FROM 'C:\Users\Екатерина\AppData\Local\Programs\Python\Python35-32\schools.txt'
+FROM 'C:\db\schools.txt'
 WITH (
 FIELDTERMINATOR =' | '
          , ROWTERMINATOR = '\n' )
 
 
 BULK INSERT cars
-FROM 'C:\Users\Екатерина\AppData\Local\Programs\Python\Python35-32\cars.txt'
+FROM 'C:\db\cars.txt'
 WITH (
 FIELDTERMINATOR =' | '
          , ROWTERMINATOR = '\n' )
 
 BULK INSERT instructors
-FROM 'C:\Users\Екатерина\AppData\Local\Programs\Python\Python35-32\instructors.txt'
+FROM 'C:\db\instructors.txt'
 WITH (
 FIELDTERMINATOR =' | '
          , ROWTERMINATOR = '\n' )
 
 
 BULK INSERT students
-FROM 'C:\Users\Екатерина\AppData\Local\Programs\Python\Python35-32\students.txt'
+FROM 'C:\db\students.txt'
 WITH (
 FIELDTERMINATOR =' | '
          , ROWTERMINATOR = '\n' )
