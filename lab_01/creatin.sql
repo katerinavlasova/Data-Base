@@ -1,8 +1,14 @@
+use master
+go
+if exists(select name from sys.databases where name = N'Lab1')
+drop database Lab1
+go
+create database Lab1
+go
 
-drop table if exists students;
-drop table if exists driving_schools;
-drop table if exists cars;
-drop table if exists instructors;
+use Lab1
+go
+
 
 create table driving_schools(
 	id int primary key NOT NULL,
@@ -38,8 +44,6 @@ create table students
 	car_id int references cars(id) NOT NULL,
 	instructor_id int references instructors(id) NOT NULL,
 	school_id int references driving_schools(id) NOT NULL,
-	foreign key (car_id) references cars(id),
-	foreign key (instructor_id) references instructors(id),
-	foreign key (school_id) references driving_schools(id),
+
 );
 go

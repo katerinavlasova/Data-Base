@@ -45,3 +45,13 @@ go
 ALTER TABLE students
 add constraint student_practiced_hours_right check(practiced_hours >= 0 and practiced_hours < 57)
 go
+
+alter table students
+add foreign key (car_id) references cars(id)
+go
+alter table students
+add foreign key (instructor_id) references instructors(id)
+go
+alter table students
+add foreign key (school_id) references driving_schools(id)
+go

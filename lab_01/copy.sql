@@ -9,7 +9,7 @@ BULK INSERT cars
 FROM 'C:\db\lab_01\cars.txt'
 WITH (
 FIELDTERMINATOR =' | '
-         , ROWTERMINATOR = '\n' )
+         , ROWTERMINATOR = '\n')
 
 BULK INSERT instructors
 FROM 'C:\db\lab_01\instructors.txt'
