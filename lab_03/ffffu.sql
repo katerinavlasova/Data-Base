@@ -1,6 +1,6 @@
----------------------- функции
+---------------------- С„СѓРЅРєС†РёРё
 drop function if exists dbo.almost_gradueted;
--- скалярная функция, студенты, к-е почти закончили практику
+-- СЃРєР°Р»СЏСЂРЅР°СЏ С„СѓРЅРєС†РёСЏ, СЃС‚СѓРґРµРЅС‚С‹, Рє-Рµ РїРѕС‡С‚Рё Р·Р°РєРѕРЅС‡РёР»Рё РїСЂР°РєС‚РёРєСѓ
 CREATE FUNCTION dbo.almost_gradueted(@num1 INT, @num2 INT)
 RETURNS INT AS
 BEGIN
@@ -15,7 +15,7 @@ GO
 select dbo.almost_gradueted(5,10)
 
 drop function if exists dbo.shools_with_rating
--- подставляемая табличная ф-я, школы с наилучшим рейтингом
+-- РїРѕРґСЃС‚Р°РІР»СЏРµРјР°СЏ С‚Р°Р±Р»РёС‡РЅР°СЏ С„-СЏ, С€РєРѕР»С‹ СЃ РЅР°РёР»СѓС‡С€РёРј СЂРµР№С‚РёРЅРіРѕРј
 CREATE FUNCTION dbo.schools_with_rating(@rating INT)
 RETURNS table AS
 RETURN
@@ -28,7 +28,7 @@ go
 
 select * from dbo.schools_with_rating(5)
 
--- многооперативн. табл. ф-я, инструктор по кол-ву часов вождения/преподавания
+-- РјРЅРѕРіРѕРѕРїРµСЂР°С‚РёРІРЅ. С‚Р°Р±Р». С„-СЏ, РёРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ РєРѕР»-РІСѓ С‡Р°СЃРѕРІ РІРѕР¶РґРµРЅРёСЏ/РїСЂРµРїРѕРґР°РІР°РЅРёСЏ
 drop function if exists dbo.find_instructor;
 
 CREATE FUNCTION dbo.find_instructor(@teaching int, @driving int)
@@ -62,8 +62,8 @@ GO
 
 select * from dbo.find_instructor(10, 10)
 
--- Рекурсивная ф-я или ф-я с рекурсивным ОТВ
--- студенты с заданным кол-вом часов
+-- Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„-СЏ РёР»Рё С„-СЏ СЃ СЂРµРєСѓСЂСЃРёРІРЅС‹Рј РћРўР’
+-- СЃС‚СѓРґРµРЅС‚С‹ СЃ Р·Р°РґР°РЅРЅС‹Рј РєРѕР»-РІРѕРј С‡Р°СЃРѕРІ
 drop function if exists dbo.rec_fun
 
 create function dbo.rec_fun(@n INT)
@@ -84,10 +84,10 @@ BEGIN
 	return
 END;
 select * from dbo.rec_fun(55)
-------------------------------- хранимые процедуры ---------
+------------------------------- С…СЂР°РЅРёРјС‹Рµ РїСЂРѕС†РµРґСѓСЂС‹ ---------
 
--- хранимая процедура без параметров или с параметрами
--- кол-во студентов, у к-х заданное кол-во часов занятий
+-- С…СЂР°РЅРёРјР°СЏ РїСЂРѕС†РµРґСѓСЂР° Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ РёР»Рё СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+-- РєРѕР»-РІРѕ СЃС‚СѓРґРµРЅС‚РѕРІ, Сѓ Рє-С… Р·Р°РґР°РЅРЅРѕРµ РєРѕР»-РІРѕ С‡Р°СЃРѕРІ Р·Р°РЅСЏС‚РёР№
 drop procedure if exists dbo.find_students 
 
 CREATE PROCEDURE dbo.find_students 
@@ -103,8 +103,8 @@ declare @i int
 EXEC dbo.find_students 0, @i OUTPUT
 print @i
 
--- рекурсивная хранимая процедура или хранимая процедура с рекурсинвым отв
--- машины
+-- СЂРµРєСѓСЂСЃРёРІРЅР°СЏ С…СЂР°РЅРёРјР°СЏ РїСЂРѕС†РµРґСѓСЂР° РёР»Рё С…СЂР°РЅРёРјР°СЏ РїСЂРѕС†РµРґСѓСЂР° СЃ СЂРµРєСѓСЂСЃРёРЅРІС‹Рј РѕС‚РІ
+-- РјР°С€РёРЅС‹
 drop procedure if exists dbo.tree_cars
 
 CREATE PROCEDURE dbo.tree_cars
@@ -125,8 +125,8 @@ end;
 
 exec dbo.tree_cars
 
--- курсор
--- названия машин заданного года производства
+-- РєСѓСЂСЃРѕСЂ
+-- РЅР°Р·РІР°РЅРёСЏ РјР°С€РёРЅ Р·Р°РґР°РЅРЅРѕРіРѕ РіРѕРґР° РїСЂРѕРёР·РІРѕРґСЃС‚РІР°
 drop procedure if exists currcorr
 
 CREATE PROCEDURE dbo.currcorr(@manufacture_year INT)
@@ -152,8 +152,8 @@ GO
 dbo.currcorr 2018
 
 
--- хранимая процедура доступа к метаданным
--- ограничения заданной таблицы
+-- С…СЂР°РЅРёРјР°СЏ РїСЂРѕС†РµРґСѓСЂР° РґРѕСЃС‚СѓРїР° Рє РјРµС‚Р°РґР°РЅРЅС‹Рј
+-- РѕРіСЂР°РЅРёС‡РµРЅРёСЏ Р·Р°РґР°РЅРЅРѕР№ С‚Р°Р±Р»РёС†С‹
 drop procedure if exists access_to_metadata;
 CREATE PROCEDURE access_to_metadata(@tablename VARCHAR(100))
 WITH EXECUTE AS OWNER
@@ -166,7 +166,7 @@ GO
 
 access_to_metadata cars
 
--- какие таблицы существуют
+-- РєР°РєРёРµ С‚Р°Р±Р»РёС†С‹ СЃСѓС‰РµСЃС‚РІСѓСЋС‚
 drop procedure if exists checktables
 create procedure checktables
 with execute as owner
@@ -179,9 +179,9 @@ go
 exec checktables
 
 
---------------- триггеры ----------------------------------
+--------------- С‚СЂРёРіРіРµСЂС‹ ----------------------------------
 
--- триггер after
+-- С‚СЂРёРіРіРµСЂ after
 drop trigger if exists after_insert_cars
 
 CREATE TRIGGER after_insert_cars on cars
@@ -199,7 +199,7 @@ DELETE FROM cars
 where id = 1001
 
 
--- триггер instead of
+-- С‚СЂРёРіРіРµСЂ instead of
 drop trigger if exists no_delete
 
 CREATE TRIGGER no_delete on cars
