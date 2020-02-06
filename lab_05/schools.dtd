@@ -1,0 +1,10 @@
+<!ELEMENT Root (C+)>
+
+<!ELEMENT C>
+
+<!ATTLIST C
+	id (#PCDATA) #REQUIRED
+	name (#PCDATA) #REQUIRED
+	rating (#PCDATA) #REQUIRED
+	number (#PCDATA) #REQUIRED
+>
