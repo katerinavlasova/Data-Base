@@ -54,7 +54,7 @@ FROM 'C:\db\lab_01\students.txt' DELIMITER '|';
 
 
 
---скалярная функция, производитель машины по её айди
+--СЃРєР°Р»СЏСЂРЅР°СЏ С„СѓРЅРєС†РёСЏ, РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ РјР°С€РёРЅС‹ РїРѕ РµС‘ Р°Р№РґРё
 create or replace function get_car_make_by_id(id_ int) returns varchar
 as $$
 crs = plpy.execute("select * from cars")
@@ -66,7 +66,7 @@ $$ language plpython3u;
 
 select * from get_name_by_id(2);
 
---агрегатная функция, среднее кол-во отъезженных часов
+--Р°РіСЂРµРіР°С‚РЅР°СЏ С„СѓРЅРєС†РёСЏ, СЃСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РѕС‚СЉРµР·Р¶РµРЅРЅС‹С… С‡Р°СЃРѕРІ
 create or replace function average_hours() returns float
 as $$
 hrs = plpy.execute("select practiced_hours from students")
@@ -79,7 +79,7 @@ $$ language plpython3u;
 select * from average_hours()
 
 
---табличная функция, фамилии студентов с заданным кол-вом отъезженных часов
+--С‚Р°Р±Р»РёС‡РЅР°СЏ С„СѓРЅРєС†РёСЏ, С„Р°РјРёР»РёРё СЃС‚СѓРґРµРЅС‚РѕРІ СЃ Р·Р°РґР°РЅРЅС‹Рј РєРѕР»-РІРѕРј РѕС‚СЉРµР·Р¶РµРЅРЅС‹С… С‡Р°СЃРѕРІ
 create or replace function surname_hours(hours int)
 returns table(id int, surname varchar, practiced_hours int)
 as $$
@@ -95,7 +95,7 @@ select * from surname_hours(55)
 
 
 
---хранимая процедура, добавляет новую машину в базу
+--С…СЂР°РЅРёРјР°СЏ РїСЂРѕС†РµРґСѓСЂР°, РґРѕР±Р°РІР»СЏРµС‚ РЅРѕРІСѓСЋ РјР°С€РёРЅСѓ РІ Р±Р°Р·Сѓ
 create or replace procedure add_new_car(pid int, pcarmake varchar, ptransmission varchar, pyear int)
 as $$
 ppl = plpy.prepare("insert into cars(id, car_make, transmission, year_of_manufacture) values($1, $2, $3, $4);",["int", "varchar", "varchar", "int"])
@@ -106,7 +106,7 @@ call add_new_car(1001 ,'BMW','Mechanic',2020)
 
 
 
---триггер, выводит в отдельную таблицу все удаляемые машины
+--С‚СЂРёРіРіРµСЂ, РІС‹РІРѕРґРёС‚ РІ РѕС‚РґРµР»СЊРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ РІСЃРµ СѓРґР°Р»СЏРµРјС‹Рµ РјР°С€РёРЅС‹
 CREATE TABLE fortriggertest
 (
     trig_id int, 
@@ -136,7 +136,7 @@ select * from fortriggertest;
 
 
 
---определяемый пользователем тип данных, 
+--РѕРїСЂРµРґРµР»СЏРµРјС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј С‚РёРї РґР°РЅРЅС‹С…, 
 create type carsinfo as (
 	year_of_manufacture int,
 	car_make varchar
